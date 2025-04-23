@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "title": "Buso Urbano Negro",
+        "price": 59.99,
+        "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+        "description": "Buso de algodón premium con corte moderno, ideal para un look urbano y cómodo."
+      },
+    {
+      "id": 2,
+      "title": "Conjunto Deportivo Gris",
+      "price": 89.99,
+      "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+      "description": "Conjunto deportivo de alta calidad, perfecto para entrenar o un estilo casual."
+    },
+    {
+      "id": 3,
+      "title": "Buso Oversize Blanco",
+      "price": 64.99,
+      "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+      "description": "Buso oversize con diseño minimalista, ideal para cualquier ocasión."
+    },
+    {
+      "id": 4,
+      "title": "Buso Oversize Blanco",
+      "price": 64.99,
+      "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+      "description": "Buso oversize con diseño minimalista, ideal para cualquier ocasión."
+    },
+    {
+      "id": 5,
+      "title": "Buso Oversize Blanco",
+      "price": 64.99,
+      "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+      "description": "Buso oversize con diseño minimalista, ideal para cualquier ocasión."
+    },
+    {
+      "id": 6,
+      "title": "Buso Oversize Blanco",
+      "price": 64.99,
+      "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+      "description": "Buso oversize con diseño minimalista, ideal para cualquier ocasión."
+    },
+    {
+      "id": 7,
+      "title": "Buso Oversize Blanco",
+      "price": 64.99,
+      "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+      "description": "Buso oversize con diseño minimalista, ideal para cualquier ocasión."
+    },
+    {
+      "id": 8,
+      "title": "Buso Oversize Blanco",
+      "price": 64.99,
+      "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+      "description": "Buso oversize con diseño minimalista, ideal para cualquier ocasión."
+    },
+    {
+      "id": 9,
+      "title": "Buso Oversize Blanco",
+      "price": 64.99,
+      "images": [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1602293589930-45aad59ba90c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1591047139829-1d3d675d820a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        ],
+      "description": "Buso oversize con diseño minimalista, ideal para cualquier ocasión."
+    }
+  ]
