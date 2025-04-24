@@ -32,7 +32,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter basename="/online-store">
+    <BrowserRouter>
       <Nav user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
