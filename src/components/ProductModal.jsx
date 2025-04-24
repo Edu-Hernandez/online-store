@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
 const ProductModal = ({ product, closeModal }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);  // Estado para la cantidad
+
+  useEffect(() => {
+    // Al abrir el modal
+    document.body.style.overflow = 'hidden';
+    return () => {
+      // Al cerrar el modal
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   // Validar datos
   if (!product || !product.nombre || !product.precio || !product.descripcion || !product.images || !product.images.length) {
@@ -76,11 +85,12 @@ const ProductModal = ({ product, closeModal }) => {
       });
     }
   };
+  
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <button className="modal-close" onClick={closeModal}>×</button>
+        <button className="modal-close" onClick={closeModal}>X</button>
         <div className="carousel">
           <img src={product.images[currentImageIndex]} alt={product.nombre} />
           <button className="carousel-btn prev" onClick={prevImage}>←</button>
