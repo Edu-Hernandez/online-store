@@ -48,7 +48,7 @@ export default function Home() {
       <section className="about-us">
         <h2>Sobre Nosotros</h2>
         <p>
-          En <strong>Moda Urbana</strong>, nos apasiona ofrecerte ropa moderna y de alta calidad que resalte tu estilo único. Vendemos <strong>conjuntos</strong>, <strong>joggers</strong>, <strong>poleras</strong> y más, diseñados para jóvenes que buscan destacar en la ciudad.
+          En <strong> Urban Duo </strong>, nos apasiona ofrecerte ropa moderna y de alta calidad que resalte tu estilo único. Vendemos <strong>conjuntos</strong>, <strong>joggers</strong>, <strong>poleras</strong> y más, diseñados para jóvenes que buscan destacar en la ciudad.
         </p>
         <p>
           Realizamos entregas en todo  <strong>Lima</strong>, y también en <strong>Cajamarca</strong>. Con tiempos y costos que varían según la distancia. ¡Queremos que tu experiencia de compra sea tan increíble como nuestras prendas!

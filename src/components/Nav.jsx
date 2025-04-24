@@ -17,7 +17,7 @@ const Nav = ({ user }) => {
   return (
     <header>
       <div className="nav-container">
-        <h1>Moda Urbana</h1>
+        <h1>Urban Duo</h1>
         <nav>
           <ul className="nav-links">
             <li><Link to="/">Productos</Link></li>

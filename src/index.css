@@ -7,10 +7,40 @@
 }
 
 body {
-  background: #000000 url('../images/background.jpg') no-repeat center center/cover;
+  background: linear-gradient(
+    45deg,
+    #121212 0%,
+    #1f2a2f 25%,
+    rgba(52, 199, 89, 0.2) 50%,
+    #1a1a1a 75%,
+    #121212 100%
+  );
+  background-size: 400%;
+  animation: gradientShift 15s ease infinite;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEX///+nxBvIAAAAIElEQVR4nO3BgQAAAADDoPlTX+AaWAAAAAAAAAAAAAAAAAAAPJ4gZQAAAABJRU5ErkJggg==') repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 header {
@@ -274,10 +304,13 @@ main h1 {
 
 .product-image {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  max-height: 260px;
+  object-fit: contain; 
   cursor: pointer;
   transition: transform 0.3s ease;
+  display: block;
+  background: #1a1a1a; 
+  padding: 10px; 
 }
 
 .product-image:hover {
@@ -301,39 +334,50 @@ main h1 {
 
 .price-and-button {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .product-price {
-  background: #34c759;
-  color: #000000;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-size: 1.3rem;
+  background: rgba(52, 199, 89, 0.2);
+  color: #34c759;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
-  flex: 1;
-  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-price:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .view-more-btn {
-  background: #34c759;
-  color: #000000;
-  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #34c759, #2ba847);
+  color: #ffffff;
+  padding: 0.6rem 1.5rem;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: 20px;
   font-size: 1.1rem;
   font-weight: 600;
-  flex: 1;
-  transition: background 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .view-more-btn:hover {
-  background: #2ba847;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+.view-more-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 .modal {
   position: fixed;
   inset: 0;
@@ -377,9 +421,12 @@ main h1 {
 
 .carousel img {
   width: 100%;
-  height: 320px;
-  object-fit: cover;
+  max-height: 320px; 
+  object-fit: contain;
   border-radius: 12px;
+  display: block;
+  background: #1a1a1a; 
+  padding: 10px;
 }
 
 .carousel-btn {
@@ -592,6 +639,18 @@ main h1 {
   margin-bottom: 1rem;
 }
 
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.quantity-selector input {
+  width: 50px;
+  margin-left: 10px;
+}
+
+
 .checkout-btn {
   background: #34c759;
   color: #000000;
@@ -710,5 +769,203 @@ main h1 {
   .view-more-btn {
     font-size: 1rem;
     padding: 0.4rem 0.8rem;
+  }
+}
+
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.quantity-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  background: #2a2a2a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.quantity-btn {
+  background: linear-gradient(135deg, #34c759, #2ba847);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-btn:hover {
+  background: linear-gradient(135deg, #2ba847, #34c759);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.quantity-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.quantity-btn:disabled {
+  background: #4a4a4a;
+  color: #888;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.quantity-display {
+  width: 60px;
+  height: 40px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0 0.5rem;
+  -moz-appearance: textfield;
+}
+
+.quantity-display::-webkit-inner-spin-button,
+.quantity-display::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-display:focus {
+  outline: none;
+  background: #2a2a2a;
+  box-shadow: 0 0 0 2px #34c759;
+}
+
+@media (max-width: 480px) {
+  .quantity-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .quantity-label {
+    font-size: 1rem;
+  }
+
+  .quantity-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .quantity-display {
+    width: 50px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
+
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.confirmation-content {
+  background: #2a2a2a;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.confirmation-content h2 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.confirmation-content p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.confirmation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.confirm-btn, .cancel-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.confirm-btn {
+  background: linear-gradient(135deg, #34c759, #2ba847);
+  color: #ffffff;
+}
+
+.confirm-btn:hover {
+  background: linear-gradient(135deg, #2ba847, #34c759);
+  transform: translateY(-2px);
+}
+
+.cancel-btn {
+  background: #4a4a4a;
+  color: #ffffff;
+}
+
+.cancel-btn:hover {
+  background: #5a5a5a;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .confirmation-content {
+    padding: 1.5rem;
+  }
+
+  .confirmation-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .confirmation-content p {
+    font-size: 0.9rem;
+  }
+
+  .confirm-btn, .cancel-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 }

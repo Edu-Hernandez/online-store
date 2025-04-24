@@ -7,54 +7,95 @@ export default function Dashboard() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const handleImageChange = (e) => {
-    const files = [...e.target.files];
-    // Validar tamaño de archivo
-    const invalidFiles = files.filter((file) => file.size > 100 * 1024); // 100 KB
-    if (invalidFiles.length > 0) {
-      setError('Cada imagen debe ser menor a 100 KB');
-      return;
+  const resizeImage = (file, maxSize = 1000) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        img.src = e.target.result;
+      };
+
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxSize) {
+            height *= maxSize / width;
+            width = maxSize;
+          }
+        } else {
+          if (height > maxSize) {
+            width *= maxSize / height;
+            height = maxSize;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.8); // 80% calidad
+        resolve(dataUrl);
+      };
+
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const splitBase64InChunks = (base64, chunkSize = 300000) => {
+    const chunks = [];
+    for (let i = 0; i < base64.length; i += chunkSize) {
+      chunks.push(base64.slice(i, i + chunkSize));
     }
+    return chunks;
+  };
+
+  const handleImageChange = async (e) => {
+    const files = [...e.target.files];
     if (files.length > 2) {
       setError('Máximo 2 imágenes por producto');
       return;
     }
-    // Convertir a Base64
-    Promise.all(
-      files.map((file) => {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-      })
-    )
-      .then((base64Images) => {
-        setForm({ ...form, imagenes: base64Images });
-      })
-      .catch(() => setError('Error al convertir imágenes'));
+
+    try {
+      const resizedImages = await Promise.all(
+        files.map((file) => resizeImage(file, 1000)) // Resize a máx 1000px
+      );
+
+      // Dividir cada imagen en chunks y almacenarla
+      const chunkedImages = resizedImages.map((base64) => splitBase64InChunks(base64));
+      setForm({ ...form, imagenes: chunkedImages });
+      setError('');
+    } catch {
+      setError('Error al procesar imágenes');
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
-    console.log('Usuario autenticado:', auth.currentUser); // Depuración
 
     if (!form.nombre || !form.precio || !form.descripcion) {
       setError('Todos los campos son obligatorios');
       return;
     }
+
     if (form.imagenes.length === 0) {
       setError('Debes agregar al menos una imagen');
       return;
     }
+
     if (!auth.currentUser) {
       setError('Debes estar autenticado para subir productos');
       return;
     }
-    // Estimar tamaño del documento
+
     const totalSize = JSON.stringify({
       nombre: form.nombre,
       precio: parseFloat(form.precio),
@@ -62,8 +103,9 @@ export default function Dashboard() {
       images: form.imagenes,
       creado: new Date().toISOString()
     }).length;
-    if (totalSize > 900000) {
-      setError('El producto excede el límite de 900 KB');
+
+    if (totalSize > 950000) {
+      setError('El producto excede el límite de 950 KB en Firestore');
       return;
     }
 
@@ -72,15 +114,15 @@ export default function Dashboard() {
         nombre: form.nombre,
         precio: parseFloat(form.precio),
         descripcion: form.descripcion,
-        images: form.imagenes, // Strings Base64
+        // convertir cada imagen (que es un array de chunks) a una cadena completa
+        images: form.imagenes.map((imgChunks) => imgChunks.join('')),
         creado: new Date().toISOString()
-      });
+      });      
 
       setSuccess('Producto guardado exitosamente');
       setForm({ nombre: '', precio: '', descripcion: '', imagenes: [] });
     } catch (error) {
       setError('Error al guardar producto: ' + error.message);
-      console.error('Error details:', error);
     }
   };
 
